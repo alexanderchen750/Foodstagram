@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 /*contact form contacts database backend needs to work on this
 here is the components in place. handlechange and handlesubmit need to submit data to database. 
 optimally, we need to make it so that when it submits it also displays a thank you on the page!
+Chatgpt prompt used to assist: create a generic contact form
 */
 function ContactForm() {};
 const handleChange = (e) => {}
