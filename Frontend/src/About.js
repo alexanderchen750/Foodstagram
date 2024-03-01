@@ -1,5 +1,4 @@
 import React from 'react';
-/*We should probably add a navbar on all of our pages.*/
 const About = () => {
     return (
         <div>
