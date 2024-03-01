@@ -7,7 +7,7 @@ import NavBar from './NavBar';
 import About from './About';
 import SignIn from './SignIn';
 import Contact from './Contact';
-
+/*this imports from the .js files^ and the bottom portion essentially makes a navbar on every page.*/
 function App() {
   return (
     <Router>
