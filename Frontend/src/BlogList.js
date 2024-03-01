@@ -1,0 +1,1 @@
+/*ideally this probably would list all blog posts.*/
