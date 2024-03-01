@@ -1,13 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
+/*contact form contacts database backend needs to work on this
+here is the components in place. handlechange and handlesubmit need to submit data to database. 
+optimally, we need to make it so that when it submits it also displays a thank you on the page!
+*/
+function ContactForm() {};
+const handleChange = (e) => {}
+const handleSubmit = async (e) => {};
 const Contact = () => {
+    const [formData,setFormData]=useState('')
     return (
-    <p>Here is the base level contact info for our team: ~
-      blah-blah-blahh john smith, 
-/*if we can we can include links or button clicks to our socials.
-We could also have a contact us form, where we receieve any input. Click on link which will open email and includes our email etc..*/
-</p>
+        <form onSubmit={handleSubmit}>
+          <label> Name:  </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+           <label> Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          <label> Message:</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+            />
+          <button type="submit">Send</button>
+        </form>
     );
 }
   
-  export default Contact;
+export default Contact;
   
