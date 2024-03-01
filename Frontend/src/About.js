@@ -5,7 +5,7 @@ const About = () => {
         <div>
             <h1>About Us</h1>
             <p> 
-                This is the about page of our blog. Founded in 2023 by Elizabeth Flynn!
+                This is the about page of our blog. Founded in 2024 by Elizabeth Flynn!
             </p>
         </div>
 
