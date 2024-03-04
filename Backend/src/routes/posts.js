@@ -1,21 +1,20 @@
 const express = require('express');
-
+const RecipePosts = require('../models/postModel')
 const router = express.Router()
+const {
+    createPost,
+    pullPosts,
+    getPost
+} = require('../controllers/postController')
 
 //GET all posts
-router.get('/', (req, res) => {
-    res.json({mssg: 'get mongo db stuff'})
-}) //a certain route 
+router.get('/',  pullPosts) //a certain route 
 
 //GET singel post
-router.get('/:id', (req,res) =>{
-    res.json({mssg: 'GET a single workout'})
-})
+router.get('/:id', getPost)
 
 //POST new post
-router.post('/', (req,res) =>{
-    res.json({mssg: 'POST a single workout'})
-})
+router.post('/', createPost)
 
 //Delete singel post
 router.delete('/:id', (req,res) =>{
