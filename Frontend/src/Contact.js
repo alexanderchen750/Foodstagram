@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './Contact.css';
 /*contact form contacts database backend needs to work on this
 here is the components in place. handlechange and handlesubmit need to submit data to database. 
 optimally, we need to make it so that when it submits it also displays a thank you on the page!
@@ -9,7 +10,9 @@ const handleChange = (e) => {}
 const handleSubmit = async (e) => {};
 const Contact = () => {
     const [formData,setFormData]=useState('')
+ 
     return (
+  <div className="contact" >
         <form onSubmit={handleSubmit}>
           <label> Name:  </label>
             <input
@@ -33,6 +36,7 @@ const Contact = () => {
             />
           <button type="submit">Send</button>
         </form>
+</div>
     );
 }
   
