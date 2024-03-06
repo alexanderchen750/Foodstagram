@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
 import "./Sidenav.css";
 import { Link } from 'react-router-dom'; // Import Link component for navigation
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import ExploreIcon from '@mui/icons-material/Explore';
 import PasswordIcon from '@mui/icons-material/Password';
-import InfoIcon from '@mui/icons-material/Info';import foodagramlogo from "./assets/logo.png";
+import InfoIcon from '@mui/icons-material/Info';
+import foodagramlogo from "./assets/logo.png";
 import LogoutIcon from '@mui/icons-material/Logout';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 function Sidenav() {
@@ -16,19 +17,18 @@ function Sidenav() {
     alt=""
     />
       <div className="sidenav__buttons">
-
-        <button className="sidenav__button">
+        <Link to="/" className="sidenav__button">
           <HomeIcon />
           <span>Home</span>
-        </button>
-        <button className="sidenav__button">
+        </Link>
+        <Link to="/search" className="sidenav__button">
           <SearchIcon />
           <span>Search</span>
-        </button>
-        <button className="sidenav__button">
+        </Link>
+        <Link to="/contact" className="sidenav__button">
           <ExploreIcon />
           <span>Contact us</span>
-        </button>
+        </Link>
         
         <Link to="/about" className="sidenav__button">
           <InfoIcon />
@@ -37,20 +37,21 @@ function Sidenav() {
 
       </div>
       <div className="sidenav__more">
-        <button className="sidenav__button">
+        
+        <Link to="/register" className="sidenav__button">
           <PasswordIcon />
           <span>Register</span>
-        </button>
+        </Link>
         
-      
-        <button className="sidenav__button">
+        <Link to="/login" className="sidenav__button">
           <VpnKeyIcon />
           <span>Login</span>
-        </button>
-        <button className="sidenav__button">
+        </Link>
+
+        <Link to="/logout" className="sidenav__button">
           <LogoutIcon />
           <span>Logout</span>
-        </button>
+        </Link>
         
       </div>
 
@@ -58,4 +59,4 @@ function Sidenav() {
   )
 }
 
-export default Sidenav
+export default Sidenav;
