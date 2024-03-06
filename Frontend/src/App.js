@@ -10,26 +10,21 @@ import Register from './Register';
 import SignIn from './Login';
 import LogOut from './Logout';
 
-import "./Homepage.css"
 function App() {
 
   return (
     
-    <Router>
-      <div className ="homepage">
-       <Sidenav/>      
-        <Routes>
-            <Route path="/" element={<Homepage />} />  
+    <Router className='app'>
+        <Sidenav className='app__leftside'/>      
+        <Routes className='app__rightside'>
+            <Route path="/" element={<Homepage />} /> 
             <Route path="/about" element={<About />} />  
             <Route path="/search" element={<Search />} />  
             <Route path="/contact" element={<Contact />} />  
             <Route path="/register" element={<Register />} />  
             <Route path="/login" element={<SignIn />} /> 
             <Route path="/logout" element={<LogOut />} />  
-
-    </Routes> 
-      </div>
-
+        </Routes>
     </Router>
         
   );
