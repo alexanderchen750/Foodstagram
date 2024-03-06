@@ -1,8 +1,8 @@
 import './App.css';
-import Sidenav from './navigation/Sidenav';
+import Sidenav from './Sidenav';
 import { BrowserRouter as Router, 
   Route, Routes } from 'react-router-dom';
-import About from './navigation/About';
+import About from './About';
 import Homepage from './Homepage';
 import Search from './Search';
 import Contact from './Contact';
