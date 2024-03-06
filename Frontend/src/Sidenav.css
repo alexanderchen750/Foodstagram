@@ -6,11 +6,19 @@
     z-index: 1;
 }
 
-
-.sidenav__logo{
-    width: 240px;
-    margin: 25px;
+@media screen and (min-width: 1080px) {
+    .sidenav__logo{
+        width: 240px;
+        margin: 25px;
+    }
 }
+@media screen and (max-width: 1079px) {
+    .sidenav__logo{
+        width: 100px;
+        margin: 25px;
+    }
+}
+
 
 .sidenav__logo:hover{
     cursor: pointer;
