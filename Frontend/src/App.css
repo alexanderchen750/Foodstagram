@@ -2,3 +2,16 @@ html{
   background-color: black;
   color: white;
 }
+
+.app{
+  display: flex;
+  flex-direction: row;
+}
+
+.app__leftside{
+  flex: 0.4;
+}
+
+.app__rightside{
+  flex: 0.6;
+}
