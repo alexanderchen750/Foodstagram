@@ -1,6 +1,6 @@
 
 import "./Search.css";
-import Sidenav from './navigation/Sidenav';
+import Sidenav from './Sidenav';
 import React, {useState} from 'react';
 /*includes a empty bar to type and checkbox
 indicating to search user or recipe, by name
