@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactDom from "react-dom";
+import "./Login.css";
 //database to check if email and password is in database
 
 //function to submit data!
@@ -32,7 +32,6 @@ const SignIn = () => {
          <br/>             
         <button type="submit">Sign In</button>
         <br/>
-          <button type="submit">Register</button>
       </div>
   </form>
 
