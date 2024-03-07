@@ -1,8 +1,7 @@
-import React from 'react'
 import "./Suggestions.css"
 import { Avatar } from '@mui/material'
 
-function Suggestions() {;
+function Suggestions() {
    
   return (
     <div className="suggestions">
@@ -68,7 +67,7 @@ function Suggestions() {;
 
     </div>
   )
-};
+}
 
 
-export default Suggestions
+export default Suggestions;
