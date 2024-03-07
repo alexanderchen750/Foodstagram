@@ -1,7 +1,5 @@
-import React from 'react';
 import "./Homepage.css";
 import Timeline from './Timeline';
-import Sidenav from './Sidenav';
 
 function Homepage() {
   return (
