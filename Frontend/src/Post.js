@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types';
 import "./Post.css"
 import { Avatar } from '@mui/material'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -7,7 +7,14 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
+Post.propTypes = {
+    user: PropTypes.string.isRequired, // Assuming user is a string
+    postImage: PropTypes.string, // Assuming postImage is an optional string
+    likes: PropTypes.number, // Assuming likes is an optional number
+    timestamp: PropTypes.string, // Assuming timestamp is an optional string
+    blogtext: PropTypes.string // Assuming blogtext is an optional string
 
+}
 
 function Post({user, postImage, likes, timestamp, blogtext}) {
   return (
