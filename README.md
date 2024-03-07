@@ -1,8 +1,16 @@
-# React + Vite
+How to run the github code:
+git clone https://github.com/alexanderchen750/CS35L.git
+ into directory of choice
+Cd to CS35L cd to Frontend.
+-double check you have nodejs and yarn installed
+ Via npm -v and node -v
+Ensure you  Download yarn, nodejs, and react if not installed
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+npm install --global yarn
 
-Currently, two official plugins are available:
+Download these scripts
+Yarn add react-scripts
+yarn add eslint-plugin-react-refresh --dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
