@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import "./Timeline.css"
 import Suggestions from './Suggestions.js'
 import Post from './Post.js'
@@ -43,7 +43,8 @@ function Timeline() {
           <div className="timeline__posts">
             {posts.map(post => (
               <Post 
-                user={post.user} 
+                key={`${post.user}_${post.timestamp}`} 
+                user={post.user}
                 postImage={post.postImage} 
                 likes={post.likes} 
                 timestamp={post.timestamp}
