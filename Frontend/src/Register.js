@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  return (
-    <form>
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Prevents the default form submit action
+        console.log('Registering with:', email, password);
+        // Here, you would typically dispatch these values to a backend service for registration
+    };
+    return (
+    <form onSubmit={handleSubmit}>
     <h2> Register</h2>
     <div>
         <label> Email: </label> 
@@ -12,6 +23,7 @@ const Register = () => {
             type="email"
             id="email" 
             value={email} 
+            onChange={handleEmailChange}
             required 
         />
     </div>
@@ -21,6 +33,7 @@ const Register = () => {
                 type="password" 
                 id="password" 
                 value={password} 
+                onChange={handlePasswordChange}
                 required 
             />
          <br/>             
