@@ -4,7 +4,9 @@ const router = express.Router()
 const {
     createPost,
     pullPosts,
-    getPost
+    getPost,
+    deletePost,
+    updatePost
 } = require('../controllers/postController')
 
 //GET all posts
@@ -17,14 +19,10 @@ router.get('/:id', getPost)
 router.post('/', createPost)
 
 //Delete singel post
-router.delete('/:id', (req,res) =>{
-    res.json({mssg: 'DELETE a single workout'})
-})
+router.delete('/:id', deletePost)
 
 //UPDATE a post
-router.patch('/:id', (req,res) =>{
-    res.json({mssg: 'UPDATE a single workout'})
-})
+router.patch('/:id', updatePost)
 
 module.exports = router
 

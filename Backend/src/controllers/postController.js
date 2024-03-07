@@ -14,11 +14,11 @@ const pullPosts = async (req,res) =>{
 const getPost = async (req,res) => {
     const { id } = req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error: "No such workout"})
+        return res.status(404).json({error: "Post ID Is Invalid"})
     }
     const recipe_post = await RecipePosts.findById(id)
     if(!recipe_post){
-        return res.status(404).json({error: "No such Workout"})
+        return res.status(404).json({error: "Post not Found"})
     }
 
     res.status(200).json(recipe_post)
@@ -37,8 +37,38 @@ const createPost = async (req,res) =>{
     }
 }
 
+//delete post
+const deletePost = async (req,res) => {
+    const {id} = req.params
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: "Post ID Is Invalid"})
+    }
+    const recipe_post = await RecipePosts.findOneAndDelete({_id: id})
+    if(!recipe_post){
+        return res.status(404).json({error: "Post not Found"})
+    }
+    res.status(200).json(recipe_post)
+}
+
+//update post
+const updatePost = async (req,res) => {
+    const {id} = req.params
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: "Post ID Is Invalid"})
+    }
+    const recipe_post = await RecipePosts.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+    if(!recipe_post){
+        return res.status(404).json({error: "Post not Found"})
+    }
+    res.status(200).json(recipe_post)
+}
+
 module.exports = {
     pullPosts,
     getPost,
-    createPost
+    createPost,
+    deletePost,
+    updatePost
 } 
