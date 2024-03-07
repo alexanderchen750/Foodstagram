@@ -1,6 +1,6 @@
-import React from 'react';
 import "./Sidenav.css";
-import { Link } from 'react-router-dom'; // Import Link component for navigation
+import { Link } from 'react-router-dom'; 
+// Import Link component for navigation
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import ExploreIcon from '@mui/icons-material/Explore';
