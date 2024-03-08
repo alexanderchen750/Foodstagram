@@ -13,4 +13,10 @@ Yarn add react-scripts
 yarn add eslint-plugin-react-refresh --dev
 
 
+Running the backend
+
+cd to backend
+npm install
+npm run dev
+
 
