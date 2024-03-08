@@ -9,6 +9,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import foodagramlogo from "./assets/logo.png";
 import LogoutIcon from '@mui/icons-material/Logout';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import AddIcon from '@mui/icons-material/Add';
 function Sidenav() {
   return (
     <div className="Sidenav">
@@ -24,7 +25,12 @@ function Sidenav() {
         <Link to="/search" className="sidenav__button">
           <SearchIcon />
           <span>Search</span>
+          </Link>
+        <Link to="/create" className="sidenav__button">
+          <AddIcon />
+          <span>Create Post</span>
         </Link>
+
         <Link to="/contact" className="sidenav__button">
           <ExploreIcon />
           <span>Contact us</span>
