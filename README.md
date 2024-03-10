@@ -17,6 +17,12 @@ Running the backend
 
 cd to backend
 npm install
+In you .env file in the backend, add the following
+1. PORT=4000 <-- 4000 is arbitraty, can be whatever
+2. MONGODB_CONNECT= your db conection string!!ONLY FOR DEV!!
 npm run dev
+
+To Connect Frontend to Backend in Dev:
+Ensure that in the frontend, you have "proxy" : "http://localhost:4000" <-- 4000 should just be whatever number is in your PORT
 
 
