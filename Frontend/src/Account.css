@@ -1,0 +1,97 @@
+
+
+.account{
+  display: flex;
+  flex-direction: column;
+}
+
+.account__top{
+  flex:0;
+
+}
+
+.accounte__bottom{
+  flex:0;
+}
+
+.account__title{
+  color: white;
+  margin: 5px;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  font-size: medium;
+  font-weight: bold;
+
+}
+
+
+.account__username{
+  margin: 10px;
+  margin-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  color: white;
+  font-size: medium;
+}
+
+
+.account__info{
+  display: flex;
+  flex-direction: row;
+  
+}
+.info__left{
+  flex:0;
+  margin-left: 20px;
+}
+
+
+.posts{
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px;
+  margin-left: 0px;
+}
+.posts:hover{
+  color: mediumseagreen;
+  cursor: pointer;
+}
+
+.like{
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px;
+  margin-left: 0px;
+}
+.like:hover{
+  color: mediumseagreen;
+  cursor: pointer;
+}
+
+.comments{
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px;
+  margin-left: 0px;
+}
+.comments:hover{
+  color: mediumseagreen;
+  cursor: pointer;
+}
+
+.avatar{
+  margin-right: 10px;
+}
+
+
+.info__posts{
+  margin: 7px;
+}
+
+.info__likes{
+  margin: 7px;
+}
+
+.info__comments{
+  margin: 7px;
+}

@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import "./Timeline.css"
 import Suggestions from './Suggestions.js'
+import Account from './Account.js'
 import Post from './Post.js'
+
 
 
 
@@ -83,4 +85,29 @@ export default Timeline;
       timestamp: "42m",
       blogtext: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas maecenas pharetra convallis posuere morbi. Habitant morbi tristique senectus et netus et. Integer eget aliquet nibh praesent. Maecenas accumsan lacus vel facilisis volutpat est velit egestas dui. Vitae turpis massa sed elementum tempus egestas sed sed. Quam adipiscing vitae proin sagittis nisl rhoncus. Tellus mauris a diam maecenas sed. Enim ut tellus elementum sagittis vitae. Faucibus et molestie ac feugiat sed lectus vestibulum mattis. Arcu dui vivamus arcu felis bibendum ut.",
     },
-  ]);*/
+  ]);
+
+  return (
+    <div className='timeline'>
+        <div className="timeline__left">
+          <div className="timeline__posts">
+            {posts.map(post => (
+              <Post 
+                key={`${post.user}_${post.timestamp}`} 
+                user={post.user}
+                postImage={post.postImage} 
+                likes={post.likes} 
+                timestamp={post.timestamp}
+                blogtext={post.blogtext}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="timeline__right">
+            <Suggestions />
+        </div>
+    </div>
+  )
+}
+
+export default Timeline
