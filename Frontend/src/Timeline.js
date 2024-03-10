@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import "./Timeline.css"
 import Suggestions from './Suggestions.js'
+import Account from './Account.js'
 import Post from './Post.js'
+
 
 
 function Timeline() {
@@ -54,6 +56,7 @@ function Timeline() {
           </div>
         </div>
         <div className="timeline__right">
+            <Account />
             <Suggestions />
         </div>
     </div>
