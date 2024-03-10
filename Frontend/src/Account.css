@@ -1,0 +1,56 @@
+
+
+.account{
+  display: flex;
+  flex-direction: column;
+}
+
+.account__top{
+  flex:0;
+
+}
+
+.accounte__bottom{
+  flex:0;
+}
+
+.account__title{
+  color: blue;
+  margin: 10px;
+  margin-bottom: 5px;
+  font-size: medium;
+  font-weight: bold;
+
+}
+
+
+.account__username{
+  margin: 10px;
+  margin-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: brown;
+}
+
+
+.account__info{
+  display: flex;
+  flex-direction: row;
+  
+}
+.info__left{
+  flex:0;
+  margin-left: 30px;
+}
+
+.info__posts{
+  margin: 7px;
+}
+
+.info__likes{
+  margin: 7px;
+}
+
+.info__comments{
+  margin: 7px;
+}
