@@ -1,11 +1,19 @@
 
 import './Account.css';
+import { Avatar } from '@mui/material'
+
+/*(self note) need to check: 
+- avatar pic is initail of username, so username[0]
+- if not logged in or rigestered, do not show account at all, meaning use an if statment for Timeline 
+- add a box?
+- edit account? add a profile pic? change username?
+- create pages for each posts likes and comments?*/
 
 function LikesButton() {
   return (
-    <button>
+    <span className='like'>
       Likes 
-    </button>
+    </span>
   );
 }
 
@@ -41,8 +49,10 @@ export default function Account() {
         <div className="account__bottom">
 
           <div className="account__username">
-           (avatar)Alsadeg
-          </div>
+          <span className="avatar">
+            <Avatar>Z</Avatar> alsadeg
+          </span>
+          </div> 
 
         </div>
       </div>
@@ -50,18 +60,24 @@ export default function Account() {
       <div className="account_info">
 
           <div className="info__left">
-            <div className="info__posts">
-             <PostsButton />
-            </div>
 
-            <div className="info__likes">
-             <LikesButton />
-           </div>
+          <div className="info__posts">
+            <span className='posts'>
+              Your Posts 
+            </span>
+          </div>
 
-         
-           <div className="info__comments">
-             <CommentsButton />
-           </div>
+          <div className="info__likes">
+            <span className='like'>
+             Your Likes 
+            </span>
+          </div>
+           
+          <div className="info__comments">
+            <span className='comments'>
+            Your Comments 
+            </span>
+          </div>
 
           </div>
         </div>
