@@ -15,9 +15,10 @@
 }
 
 .account__title{
-  color: blue;
-  margin: 10px;
-  margin-bottom: 5px;
+  color: white;
+  margin: 5px;
+  margin-top: 40px;
+  margin-bottom: 0px;
   font-size: medium;
   font-weight: bold;
 
@@ -26,10 +27,11 @@
 
 .account__username{
   margin: 10px;
-  margin-left: 30px;
+  margin-left: 10px;
   margin-top: 0px;
-  margin-bottom: 0px;
-  color: brown;
+  margin-bottom: 5px;
+  color: white;
+  font-size: medium;
 }
 
 
@@ -40,8 +42,47 @@
 }
 .info__left{
   flex:0;
-  margin-left: 30px;
+  margin-left: 20px;
 }
+
+
+.posts{
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px;
+  margin-left: 0px;
+}
+.posts:hover{
+  color: mediumseagreen;
+  cursor: pointer;
+}
+
+.like{
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px;
+  margin-left: 0px;
+}
+.like:hover{
+  color: mediumseagreen;
+  cursor: pointer;
+}
+
+.comments{
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px;
+  margin-left: 0px;
+}
+.comments:hover{
+  color: mediumseagreen;
+  cursor: pointer;
+}
+
+.avatar{
+  margin-right: 10px;
+}
+
 
 .info__posts{
   margin: 7px;
