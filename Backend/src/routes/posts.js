@@ -4,27 +4,32 @@ const router = express.Router()
 const {
     createPost,
     pullPosts,
-    getPost
+    getPost,
+    deletePost,
+    updatePost,
+    searchPost
 } = require('../controllers/postController')
 
 //GET all posts
 router.get('/',  pullPosts) //a certain route 
 
+//GET posts matching search word
+//Formate looks like this: /search?searchTerm=udon+ramen, returns results with ramen or udon
+router.get('/search', searchPost)
+
+
 //GET singel post
 router.get('/:id', getPost)
+
 
 //POST new post
 router.post('/', createPost)
 
-//Delete singel post
-router.delete('/:id', (req,res) =>{
-    res.json({mssg: 'DELETE a single workout'})
-})
+//Delete single post
+router.delete('/:id', deletePost)
 
 //UPDATE a post
-router.patch('/:id', (req,res) =>{
-    res.json({mssg: 'UPDATE a single workout'})
-})
+router.patch('/:id', updatePost)
 
 module.exports = router
 

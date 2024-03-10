@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const postsRoutes = require('./src/routes/posts')
+const userRoutes = require('./src/routes/users')
 
 const app = express(); //create express app
 const PORT = process.env.PORT
@@ -31,6 +32,8 @@ app.use((req, res, next) =>{
 
 //postRoutes goes to posts file under route folder that organizes requests ex. user calls /api/posts/ex_function_inposts then that reqeust is executed
 app.use('/api/posts',postsRoutes); //bascially if call to api/post, then call post routes
+app.use('/api/users',userRoutes);
+
 
 //Connect to db
 mongoose.connect(DB_CONNECT)
