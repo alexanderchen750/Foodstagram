@@ -1,12 +1,14 @@
 import './Contact.css';
 import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 /*Add functionality that it only allows user to post if logged in. IF not, it should probably display that they need to login first*/
 
 
 
 const Create = () => {
   //const [user, setUser] = useState('')
-  const [blogtext, setBlogText] = useState('')
+  //const [blogtext, setBlogText] = useState('')
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     user: '',
@@ -22,7 +24,7 @@ const handleChange = (e) => {
 }
 const handleSubmit = async (e) => {
   e.preventDefault();
-  const newPost = {formData}
+  //const newPost = {formData}
 
   //sent the newPost to createPost in backend
   const response = await fetch('/api/posts', {
@@ -41,8 +43,9 @@ const handleSubmit = async (e) => {
   if (response.ok) {
     setError(null)
     console.log("success!\n", formData);
+    navigate('/'); // Navigates back to the main page
   }
-
+  console.log(error)
   }
   const [file, setFile] = useState();
   function handleChange2(e) {
