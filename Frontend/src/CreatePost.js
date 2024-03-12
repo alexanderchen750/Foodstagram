@@ -1,27 +1,48 @@
 import './Contact.css';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 /*Add functionality that it only allows user to post if logged in. IF not, it should probably display that they need to login first*/
 
 
 
 const Create = () => {
+  //const [user, setUser] = useState('')
+  const [blogtext, setBlogText] = useState('')
+
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-});
+    user: '',
+    blogtext: '',
+  })
+  const [error, setError] = useState(null);
 
 const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-        ...prevState,
-        [name]: value
-    }));
+  setFormData({
+      user: "Sent from frontend :O",
+      blogtext: e.target.value
+  });
 }
 const handleSubmit = async (e) => {
   e.preventDefault();
-  // Here, you would typically send formData to your backend/database
-  console.log(formData);
+  const newPost = {formData}
+
+  //sent the newPost to createPost in backend
+  const response = await fetch('/api/posts', {
+    method: 'POST',
+    body: JSON.stringify(formData), 
+    headers: {
+      'Content-type': 'application/json'
+    }
+  })
+  const json = await response.json()
+  
+  //error handling
+  if (!response.ok) {
+    setError(json.error)
+  }
+  if (response.ok) {
+    setError(null)
+    console.log("success!\n", formData);
+  }
+
   }
 
 

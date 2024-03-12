@@ -1,0 +1,13 @@
+
+form {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  form h2 {
+    margin-bottom: 20px;
+  }
