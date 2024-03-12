@@ -1,5 +1,5 @@
 import './Contact.css';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 /*Add functionality that it only allows user to post if logged in. IF not, it should probably display that they need to login first*/
 
 
@@ -44,31 +44,28 @@ const handleSubmit = async (e) => {
   }
 
   }
-
-
-
   const [file, setFile] = useState();
   function handleChange2(e) {
       console.log(e.target.files);
       setFile(URL.createObjectURL(e.target.files[0]));
   }
 
-    return (
+return (
   <div className="contact" >
-        <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
 
-          <h2> Text:</h2>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-            />
-          <h2> Add Image:</h2>
-          <input type="file" onChange={handleChange2} />
-          <img src={file} />
-          <button type="submit">Post</button>
-        </form>
-</div>
+      <h2> Text:</h2>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+        />
+      <h2> Add Image:</h2>
+      <input type="file" onChange={handleChange2} />
+      <img src={file} />
+      <button type="submit">Post</button>
+    </form>
+  </div>
     );
 }
   
