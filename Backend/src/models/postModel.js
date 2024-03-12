@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const postSchema = new Schema({
-    user: {type:String, required: true},//{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    user: {type:String},//{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     blogtext: String,
     postImage: String,
     timestamp: { type: Date, default: Date.now },
@@ -21,7 +21,7 @@ const postSchema = new Schema({
 
 
 //For the Search
-postSchema.index({ title: 'text', body: 'text' });
+postSchema.index({ blogtext: 'text', tags: 'text', ingredients: 'text' });
 
 module.exports = mongoose.model('RecipePosts', postSchema)
 
