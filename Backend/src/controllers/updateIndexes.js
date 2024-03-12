@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const RecipePosts = require('../models/postModel'); // Update with the correct path
 const DB_CONNECT = process.env.MONGODB_CONNECT
 
-mongoose.connect('mongodb+srv://alexanderchen750:pgae34MQ0crDooc3@cs35l.sqjfy0q.mongodb.net/?retryWrites=true&w=majority&appName=CS35L', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`${DB_CONNECT}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection.once('open', function () {
   console.log("Connected to the database.");
