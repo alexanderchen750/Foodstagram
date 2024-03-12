@@ -11,3 +11,6 @@ npm-debug.log*
 # Logs
 *.log
 npm-debug.log*
+
+#Local Dev file
+src/constrollers/updateIndexes.js

@@ -1,15 +1,14 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
+
 import "./Timeline.css"
 import Suggestions from './Suggestions.js'
-import Account from './Account.js'
+//import Account from './Account.js'
 import Post from './Post.js'
 
 
 
 
-function Timeline() {
-  const [posts, setPosts] = useState(null); // Initialized state
+function Timeline({ posts }) {
+  /*const [posts, setPosts] = useState(null); // Initialized state
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -29,7 +28,7 @@ function Timeline() {
 
     fetchPosts(); // Call the function to fetch posts
   }, []); // Dependency array to ensure effect runs only once
-
+*/
   return (
     <div className='timeline'>
       <div className="timeline__left">
@@ -110,4 +109,4 @@ export default Timeline;
   )
 }
 
-export default Timeline
+export default Timeline*/

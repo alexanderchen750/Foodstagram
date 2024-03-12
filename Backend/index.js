@@ -3,6 +3,7 @@ require('dotenv').config()
 //Create mongoose
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const postsRoutes = require('./src/routes/posts')
 const userRoutes = require('./src/routes/users')
@@ -28,6 +29,10 @@ app.use((req, res, next) =>{
     console.log(req.path, req.method)
     next()
 })
+
+//middlware for the cors
+app.use(cors());
+
 
 
 //postRoutes goes to posts file under route folder that organizes requests ex. user calls /api/posts/ex_function_inposts then that reqeust is executed

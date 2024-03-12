@@ -1,5 +1,6 @@
 const RecipePosts = require('../models/postModel')
 const mongoose = require('mongoose')
+
 //Get all posts
 const pullPosts = async (req,res) =>{
     const recipe_posts = await RecipePosts.find({}).sort({createdAt: -1})
@@ -46,11 +47,11 @@ const searchPost = async (req, res) => {
 
 //create a post
 const createPost = async (req,res) =>{
-    const {user, blogtext} = req.body
+    const {user, blogtext, tags} = req.body
 
     //add post to databse
     try{
-        const recipe_post = await RecipePosts.create({user, blogtext})
+        const recipe_post = await RecipePosts.create({user, blogtext, tags})
         res.status(200).json(recipe_post)
     } catch (error) {
         res.status(400).json({error: error.message})
