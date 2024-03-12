@@ -8,7 +8,7 @@ import { Avatar } from '@mui/material'
 - add a box?
 - edit account? add a profile pic? change username?
 - create pages for each posts likes and comments?*/
-
+/*
 function LikesButton() {
   return (
     <span className='like'>
@@ -32,7 +32,7 @@ function CommentsButton() {
     </button>
   );
 }
-
+*/
 export default function Account() {
   return (
     <div>
