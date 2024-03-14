@@ -1,9 +1,13 @@
 import { useState } from 'react';
-
+import { useSignup } from './hooks/useSignup';
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const {signup, error, isLoading} = useSignup()
+
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     };
@@ -13,9 +17,15 @@ const Register = () => {
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     };
-    const handleSubmit = (event) => {
-        event.preventDefault(); // Prevents the default form submit action
-        console.log('Registering with:',username, email, password);
+    const handleSubmit = async (event) => {
+        console.log("BOop")
+        event.preventDefault() // Prevents the default form submit action
+        //console.log('Registering with:',username, email, password);
+        await signup(username, email, password)
+
+        if(!error){
+            navigate('/'); 
+        }
         // Here, you would typically dispatch these values to a backend service for registration
     };
     return (
@@ -51,7 +61,8 @@ const Register = () => {
                 required 
             />
          <br/>             
-          <button type="submit">Register</button>
+          <button disabled={isLoading} type="submit">Register</button>
+          {error && <div className="error">{error}</div>}
       </div>
   </form>
 );

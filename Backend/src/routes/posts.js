@@ -7,8 +7,12 @@ const {
     getPost,
     deletePost,
     updatePost,
-    searchPost
+    searchPost,
+    nukePosts
 } = require('../controllers/postController')
+
+//Require token to do
+const reqJwt = require('../middleware/requireJWT')
 
 //GET all posts
 router.get('/',  pullPosts) //a certain route 
@@ -23,13 +27,18 @@ router.get('/:id', getPost)
 
 
 //POST new post
-router.post('/', createPost)
+router.post('/', reqJwt, createPost)
+
+//NUKE the databse, remove this after
+router.delete('/nuke', nukePosts)
 
 //Delete single post
-router.delete('/:id', deletePost)
+router.delete('/:id',  deletePost)
+
+
 
 //UPDATE a post
-router.patch('/:id', updatePost)
+router.patch('/:id', reqJwt, updatePost)
 
 module.exports = router
 

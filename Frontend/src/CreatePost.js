@@ -1,6 +1,7 @@
 import './Contact.css';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import  { useAuthContext} from './hooks/useAuthContext'
 /*Add functionality that it only allows user to post if logged in. IF not, it should probably display that they need to login first*/
 
 
@@ -9,29 +10,32 @@ const Create = () => {
   //const [user, setUser] = useState('')
   //const [blogtext, setBlogText] = useState('')
   const navigate = useNavigate();
-
+  const {user} = useAuthContext()
   const [formData, setFormData] = useState({
-    user: '',
     blogtext: '',
   })
   const [error, setError] = useState(null);
 
 const handleChange = (e) => {
   setFormData({
-      user: "Sent from frontend :O",
       blogtext: e.target.value
   });
 }
 const handleSubmit = async (e) => {
   e.preventDefault();
   //const newPost = {formData}
-
+  if(!user){
+    setError("User Must be Logged in")
+    return
+  }
+  console.log("HERE")
   //sent the newPost to createPost in backend
   const response = await fetch('/api/posts', {
     method: 'POST',
     body: JSON.stringify(formData), 
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
+      'Authorization' : `Bearer ${user.token}`
     }
   })
   const json = await response.json()
@@ -67,6 +71,7 @@ return (
       <input type="file" onChange={handleChange2} />
       <img src={file} />
       <button type="submit">Post</button>
+      {error && <div className="error">{error}</div>}
     </form>
   </div>
     );
