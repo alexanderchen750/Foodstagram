@@ -6,6 +6,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import {useEffect, useState} from 'react';
 
 Post.propTypes = {
     user: PropTypes.string.isRequired, // Assuming user is a string
@@ -17,7 +18,21 @@ Post.propTypes = {
 }
 
 function Post({user, postImage, likes, timestamp, blogtext}) {
-  return (
+    const handleLike = (id) => {
+        console.log("like clicked!")
+        fetch('/like', {
+            method: "put",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({
+                postID: id,
+            })
+        })
+        
+    }
+
+    return (
     <div className="post">
         <div className="post__header">
             <div className="post__headerAuthor">
@@ -38,7 +53,7 @@ function Post({user, postImage, likes, timestamp, blogtext}) {
         <div className="post__footer">
             <div className="post__footerIcons">
                 <div className="post__iconsMain">
-                    <FavoriteBorderIcon className="postIcon"/>
+                    <FavoriteBorderIcon onClick={handleLike()} className="postIcon"/>
                     <ChatBubbleOutlineIcon className="postIcon"/>
                     <TelegramIcon className="postIcon"/>
 
@@ -51,7 +66,7 @@ function Post({user, postImage, likes, timestamp, blogtext}) {
             Liked by {likes} people.
         </div>
     </div>
-  )
+    )
 }
 
 export default Post
