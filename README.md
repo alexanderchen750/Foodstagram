@@ -9,7 +9,7 @@ Ensure you  Download yarn, nodejs, and react if not installed
 npm install --global yarn
 
 Download these scripts
-Yarn add react-scripts eslint-plugin-react-refresh --dev
+yarn add react-scripts eslint-plugin-react-refresh --dev
 
 
 Running the backend
