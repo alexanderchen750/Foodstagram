@@ -57,6 +57,17 @@ const createPost = async (req,res) =>{
         res.status(400).json({error: error.message})
     }
 }
+//like a post
+const likePost = async (req,res) =>{
+    const {user, likes} = req.body
+
+    try{
+        const recipe_post = await RecipePosts.create({user, blogtext, tags})
+        res.status(200).json(recipe_post)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
 
 //delete post
 const deletePost = async (req,res) => {
@@ -90,6 +101,7 @@ module.exports = {
     pullPosts,
     getPost,
     createPost,
+    likePost,
     deletePost,
     updatePost,
     searchPost
