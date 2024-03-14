@@ -3,6 +3,7 @@ const RecipePosts = require('../models/postModel')
 const router = express.Router()
 const {
     createPost,
+    likePost,
     pullPosts,
     getPost,
     deletePost,
@@ -22,7 +23,7 @@ router.get('/',  pullPosts) //a certain route
 router.get('/search', searchPost)
 
 
-//GET singel post
+//GET single post
 router.get('/:id', getPost)
 
 
@@ -31,6 +32,9 @@ router.post('/', reqJwt, createPost)
 
 //NUKE the databse, remove this after
 router.delete('/nuke', nukePosts)
+
+//LIKE a post
+router.put('/like', likePost)
 
 //Delete single post
 router.delete('/:id',  deletePost)
