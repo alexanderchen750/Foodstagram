@@ -1,4 +1,5 @@
 const RecipePosts = require('../models/postModel')
+const userPosts = require('../models/userModel') // just users
 const mongoose = require('mongoose')
 
 //Get all posts
@@ -47,11 +48,18 @@ const searchPost = async (req, res) => {
 
 //create a post
 const createPost = async (req,res) =>{
-    const {user, blogtext, tags} = req.body
-
+    const user_id = req.user._id
+    
+    const { blogtext, tags} = req.body
+    const user_post = await userPosts.findById(user_id)
+    user = user_post.username
+    
+    if(!user){
+        return res.status(404).json({error: "User not Found"})
+    }
     //add post to databse
     try{
-        const recipe_post = await RecipePosts.create({user, blogtext, tags})
+        const recipe_post = await RecipePosts.create({user, user_id, blogtext, tags})
         res.status(200).json(recipe_post)
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -86,11 +94,25 @@ const updatePost = async (req,res) => {
     res.status(200).json(recipe_post)
 }
 
+const nukePosts = async (req,res) => {
+    const deleteResult = await RecipePosts.deleteMany({});
+
+    // Check the result of the delete operation
+    if (deleteResult.deletedCount === 0) {
+        return res.status(404).json({error: "No posts found to delete"});
+    }
+
+    // If posts were found and deleted, return a success response
+    res.status(200).json({message: `${deleteResult.deletedCount} posts were deleted successfully`});
+
+}
+
 module.exports = {
     pullPosts,
     getPost,
     createPost,
     deletePost,
     updatePost,
-    searchPost
+    searchPost,
+    nukePosts
 } 

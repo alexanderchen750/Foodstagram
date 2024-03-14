@@ -21,8 +21,8 @@ function Post({user, postImage, likes, timestamp, blogtext}) {
     <div className="post">
         <div className="post__header">
             <div className="post__headerAuthor">
-            <Avatar className="avatar">{user.charAt(0).toUpperCase()}</Avatar>
-            {user} • <span className="avatar">{timestamp}</span>
+            <Avatar className="avatar">{user}</Avatar>
+            {user} • <span className="avatar">{timestamp.substring(0, 10)}</span>
             </div>
             <MoreHorizIcon className="threeDots"/>
         </div>

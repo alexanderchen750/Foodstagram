@@ -10,7 +10,16 @@ import foodagramlogo from "./assets/logo.png";
 import LogoutIcon from '@mui/icons-material/Logout';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import AddIcon from '@mui/icons-material/Add';
+import { useLogout } from "./hooks/useLogout";
+import { useAuthContext } from "./hooks/useAuthContext"; 
 function Sidenav() {
+
+  const { logout } = useLogout()
+  const { user }= useAuthContext()
+  const handleClick = () => {
+    logout()
+  }
+
   return (
     <div className="Sidenav">
     <img className="sidenav__logo" 
@@ -26,11 +35,12 @@ function Sidenav() {
           <SearchIcon />
           <span>Search</span>
           </Link>
-        <Link to="/create" className="sidenav__button">
+        {user && (
+          <Link to="/create" className="sidenav__button">
           <AddIcon />
           <span>Create Post</span>
         </Link>
-
+        )}
         <Link to="/contact" className="sidenav__button">
           <ExploreIcon />
           <span>Contact us</span>
@@ -43,21 +53,39 @@ function Sidenav() {
 
       </div>
       <div className="sidenav__more">
-        
-        <Link to="/register" className="sidenav__button">
-          <PasswordIcon />
-          <span>Register</span>
-        </Link>
-        
-        <Link to="/login" className="sidenav__button">
-          <VpnKeyIcon />
-          <span>Login</span>
-        </Link>
+        <div>
+          {!user && (
+            <div>
+                <Link to="/register" className="sidenav__button">
+                  <PasswordIcon />
+                  <span>Register</span>
+                </Link>
+                <Link to="/login" className="sidenav__button">
+                  <VpnKeyIcon />
+                  <span>Login</span>
+                </Link>
+            </div>
+          )
 
-        <Link to="/logout" className="sidenav__button">
-          <LogoutIcon />
-          <span>Logout</span>
-        </Link>
+          }
+         
+        </div>
+        <div>
+          {user && (
+            <div>
+                <h1>{user.user}</h1>
+               <Link to="/logout" onClick={handleClick} className="sidenav__button">
+                <LogoutIcon />
+                <span>Logout</span>
+              </Link>  
+            </div>
+
+          )}
+         
+        </div>
+        
+        
+        
         
       </div>
 
@@ -66,3 +94,21 @@ function Sidenav() {
 }
 
 export default Sidenav;
+
+/*
+       <Link to="/logout" className="sidenav__button">
+          <LogoutIcon />
+          <span>Logout</span>
+        </Link>  
+        
+         <div className="sidenav__button">
+          <LogoutIcon />
+          <button onClick = {handleClick} className = "sidenav__button" >Logout</button>
+        </div>
+        
+        
+        <button onClick={handleClick} className="sidenav__button">
+        <LogoutIcon />
+        <span>Logout</span>
+      </button>*/
+        

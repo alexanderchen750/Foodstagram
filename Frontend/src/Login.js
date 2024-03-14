@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useLogin } from './hooks/useLogin';
+import { useNavigate } from 'react-router-dom';
 import "./Login.css";
 //database to check if email and password is in database
 
@@ -9,18 +11,23 @@ import "./Login.css";
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const {login, error, isLoading} = useLogin()
+
     const handleEmailChange = (e) => setEmail(e.target.value);
 
     // Update password state
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
 
         // Here you would check the credentials against your database or authentication service
-        console.log("Signing in with:", email, password);
-
+        await login(email, password)
+        if(!error){
+            navigate('/'); 
+        }
         // After authentication, you might set some global state or cookie indicating the signed-in state
         // This part is very dependent on your application architecture
     };
@@ -48,7 +55,8 @@ const SignIn = () => {
                 required 
             />
          <br/>             
-        <button type="submit">Sign In</button>
+        <button disabled={isLoading} type="submit">Sign In</button>
+        {error && <div className="error">{error}</div>}
         <br/>
       </div>
   </form>
