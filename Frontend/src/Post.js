@@ -8,6 +8,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import {useEffect, useState} from 'react';
+//import Axios from 'axios';
 
 Post.propTypes = {
     user: PropTypes.string.isRequired, // Assuming user is a string
@@ -15,24 +16,27 @@ Post.propTypes = {
     likes: PropTypes.number, // Assuming likes is an optional number
     timestamp: PropTypes.string, // Assuming timestamp is an optional string
     blogtext: PropTypes.string // Assuming blogtext is an optional string
+    /*
        PropTypes.shape ({
         user: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired
-    }))
+    }))*/
 }
 
 function Post({user, postImage, likes, timestamp, blogtext, comments}) {
     const handleLike = (id) => {
         console.log("like clicked!")
-        fetch('/like', {
-            method: "put",
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({
-                postID: id,
-            })
-        })
+        /*
+        Axios.put(`http://localhost:4000/${experience._id}/likePost`).then(
+
+            (response) => {
+                experience.likeCount = response.data.likeCount;
+                experience.isLiked =
+                    experience.isLiked == null ? true : !experience.isLiked;
+                setListExperience((current) => [...current]);
+            }
+        )
+        */
         
     }
 
