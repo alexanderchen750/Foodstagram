@@ -115,6 +115,54 @@ const nukePosts = async (req,res) => {
     res.status(200).json({message: `${deleteResult.deletedCount} posts were deleted successfully`});
 
 }
+const unlikePost = async (req, res) => {
+    const { id } = req.params; 
+    const userId = req.user._id; 
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: "Post ID is invalid" });
+    }
+
+    try {
+      const unlikedPost = await RecipePosts.findOneAndUpdate(
+            { _id: id },
+            { $pull: { likes: userId } },
+            { new: true } 
+        );
+        if (!unlikedPost) {
+            return res.status(404).json({ error: "Post not found" });
+        }
+        res.status(200).json(unlikedPost);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "An error occurred while updating the post" });
+    }
+};
+
+const likePost = async (req, res) => {
+    const { id } = req.params; 
+    const userId = req.user._id; 
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: "Post ID is invalid" });
+    }
+
+    try {
+      const likedPost = await RecipePosts.findOneAndUpdate(
+            { _id: id },
+            { $addToSet: { likes: userId } },
+            { new: true } 
+        );
+        if (!likedPost) {
+            return res.status(404).json({ error: "Post not found" });
+        }
+        res.status(200).json(likedPost);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "An error occurred while updating the post" });
+    }
+};
+
 
 module.exports = {
     pullPosts,
@@ -123,5 +171,7 @@ module.exports = {
     deletePost,
     updatePost,
     searchPost,
-    nukePosts
+    nukePosts,
+    likePost,
+    unlikePost
 } 

@@ -1,3 +1,4 @@
+import CommentList from './CommentList';
 import PropTypes from 'prop-types';
 import "./Post.css"
 import { Avatar } from '@mui/material'
@@ -16,9 +17,13 @@ Post.propTypes = {
     likes: PropTypes.array,  // Assuming likes is an optional number
     timestamp: PropTypes.string, // Assuming timestamp is an optional string
     blogtext: PropTypes.string, // Assuming blogtext is an optional string
+    comments: PropTypes.shape ({
+        user: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired
+    }),
 }
 
-function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
+function Post({user_id, postId, postImage, likes, timestamp, blogtext, comments}) {
     const [likedStatus, setLikedStatus] = useState(false);
     const [localLikes, setLocalLikes] = useState(likes);
     const {user} = useAuthContext()
@@ -45,7 +50,7 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
             return;
         }
         const currentUserId = await fetchCurrentUserId();
-        //setLikedStatus(likes.includes(currentUserId));
+        setLikedStatus(likes.includes(currentUserId));
         setLikedStatus(localLikes.includes(currentUserId));
     };
 
@@ -57,7 +62,6 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
 
     useEffect(() => {
         setLocalLikes(likes); // Synchronize localLikes with likes prop if it changes externally
-        checkIfUserLikedPost();
     }, [likes]);
 
 
@@ -86,19 +90,12 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
     
 
             setLikedStatus(!likedStatus);
+
             setLocalLikes(prev => 
                 !likedStatus 
                 ? [...prev, user._id] // Add user._id to localLikes
                 : prev.filter(id => id !== user._id) // Remove user._id from localLikes
             );
-            /*setLocalLikes(prev => 
-                !likedStatus 
-                ? [...prev, user._id] // Add user._id to localLikes
-                : prev.filter(id => id !== user._id) // Remove user._id from localLikes
-            );
-            const updatedLikes = await res.json();
-            console.log(updatedLikes)
-            setLocalLikes(updatedLikes);*/
 
         } catch (error) {
             console.error('Error updating like status:', error);
@@ -141,6 +138,7 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
 
             </div>
             Liked by {localLikes.length} people.
+                <CommentList comments={comments} />
         </div>
     </div>
     )

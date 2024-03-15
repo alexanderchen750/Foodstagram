@@ -49,7 +49,7 @@ const handleSubmit = async (e) => {
 
   try{
     console.log(submissionData)
-    const response = await fetch('/api/posts', {
+    const response = await fetch('/api/posts/create', {
       method: 'POST',
       body: submissionData,
       headers: {

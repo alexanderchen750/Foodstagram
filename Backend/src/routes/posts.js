@@ -41,7 +41,9 @@ const {
     deletePost,
     updatePost,
     searchPost,
-    nukePosts
+    nukePosts,
+    likePost,
+    unlikePost
 } = require('../controllers/postController')
 
 //Require token to do
@@ -58,9 +60,10 @@ router.get('/search', searchPost)
 //GET singel post
 router.get('/:id', getPost)
 
-
 //POST new post
-router.post('/', upload.single('file'), reqJwt, createPost);
+router.post('/create', upload.single('file'), reqJwt, createPost);
+
+
 
 //NUKE the databse, remove this after
 router.delete('/nuke', nukePosts)
@@ -68,7 +71,10 @@ router.delete('/nuke', nukePosts)
 //Delete single post
 router.delete('/:id',  deletePost)
 
+//PATCH ADD Likes
+router.patch('/like/:id', reqJwt, likePost)
 
+router.patch('/unlike/:id', reqJwt, unlikePost)
 
 //UPDATE a post
 router.patch('/:id', reqJwt, updatePost)

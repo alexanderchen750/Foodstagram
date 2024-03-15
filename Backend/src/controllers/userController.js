@@ -61,6 +61,15 @@ const getUser = async (req,res) => {
     res.status(200).json(user_post)
 }
 
+//Get one user
+const getID = async (req, res) => {
+    const userId = req.user._id;
+    if (!userId) {
+        return res.status(404).json({ error: "User not found" });
+    }
+    res.status(200).json({ userId });
+};
+
 //create a user
 const createUser = async (req,res) =>{
     const {username, email, password} = req.body
@@ -110,5 +119,6 @@ module.exports = {
     signupUser,
     loginUser,
     deleteUser,
-    nukeUsers
+    nukeUsers,
+    getID
 }

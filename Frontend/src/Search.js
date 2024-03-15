@@ -2,7 +2,8 @@
 import "./Search.css";
 import {useState} from 'react';
 //import { useEffect } from 'react'
-import PostList from './PostList';
+//import PostList from './PostList';
+import Timeline from './Timeline'
 //import Timeline from './Timeline';
 /*includes a empty bar to type and checkbox
 indicating to search user or recipe, by name
@@ -42,24 +43,22 @@ const Search = () =>
         const handleSubmit = async (event) => {
             event.preventDefault();
 
-            // Encode the searchInput to ensure special characters are correctly processed in the URL
-            const encodedSearchInput = encodeURIComponent(searchInput);
+             const encodedSearchInput = encodeURIComponent(searchInput);
 
-            // Construct the URL with the search term
+
             const searchUrl = `http://localhost:4000/api/posts/search?searchTerm=${encodedSearchInput}`;
 
             try {
-                // Make the fetch request to the backend search endpoint
                 const response = await fetch(searchUrl);
                 
                 if (!response.ok) {
-                    throw new Error(`Error: ${response.status}`); // or handle error more gracefully
+                    throw new Error(`Error: ${response.status}`); 
                 }
 
                 // Parse the JSON response from the backend
                 const results = await response.json();
                 setSearchResults(results)
-                // Do something with the searchResults here, like updating the state to render the results
+               
                 console.log("Search Results:", searchResults);
             } catch (error) {
                 console.error("Failed to fetch search results:", error);
@@ -127,7 +126,7 @@ return (
         </div>
             </div>
             <div className="postlist">
-                <PostList posts={searchResults}/>
+                <Timeline posts={searchResults}/>
             </div>
         </>
     );

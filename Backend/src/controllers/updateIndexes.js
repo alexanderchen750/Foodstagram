@@ -9,12 +9,12 @@ mongoose.connection.once('open', function () {
 
   RecipePosts.collection.dropIndex('title_text_body_text', function(err, result) {
     if (err) {
-      console.log('Error dropping index:', err);
+        console.log('Error dropping index:', err);
     } else {
-      console.log('Index dropped:', result);
-      // Mongoose automatically recreates the index based on schema definition when your application restarts
+        console.log('Index dropped:', result);
+       
     }
-    // It's important to close the database connection when you're done.
+   
     mongoose.connection.close();
   });
 });

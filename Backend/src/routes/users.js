@@ -1,6 +1,7 @@
 const express = require('express');
 //const userPosts = require('../models/userModel')
 const router = express.Router()
+const reqJwt = require('../middleware/requireJWT')
 const {
     createUser,
     pullUsers,
@@ -8,13 +9,17 @@ const {
     loginUser,
     signupUser,
     deleteUser,
-    nukeUsers
+    nukeUsers,
+    getID
 } = require('../controllers/userController')
 
 //login
 router.post('/login', loginUser)
 
 router.post('/signup', signupUser)
+
+//Get user object id
+router.get('/userID', reqJwt, getID)
 
 //GET all posts
 router.get('/',  pullUsers) //a certain route 

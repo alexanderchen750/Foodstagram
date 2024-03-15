@@ -22,7 +22,7 @@ const postSchema = new Schema({
 
 
 //For the Search
-postSchema.index({ blogtext: 'text', tags: 'text', ingredients: 'text' });
+postSchema.index({ user_id : 'text' ,blogtext: 'text', tags: 'text', ingredients: 'text' });
 
 module.exports = mongoose.model('RecipePosts', postSchema)
 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import "./Timeline.css"
-import Suggestions from './Suggestions.js'
+//import Suggestions from './Suggestions.js'
 //import Account from './Account.js'
 import Post from './Post.js'
 
@@ -38,7 +38,8 @@ function Timeline({ posts }) {
           {posts ? posts.map(post => ( // Check if posts is not null
             <Post 
               key={`${post.user}_${post.timestamp}`} 
-              user={post.user}
+              postId={post._id}
+              user_id={post.user}
               postImage={post.imageURL} 
               likes={post.likes} 
               timestamp={post.timestamp}
@@ -47,9 +48,9 @@ function Timeline({ posts }) {
           )) : "Loading..."} {/* Display loading or a message when posts are null */}
         </div>
       </div>
-      <div className="timeline__right">
+      {/*<div className="timeline__right">
           <Suggestions />
-      </div>
+  </div>*/}
   </div>
   );
 }
