@@ -7,24 +7,23 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import {useEffect, useState} from 'react';
-//import Axios from 'axios';
-
 Post.propTypes = {
     user: PropTypes.string.isRequired, // Assuming user is a string
     postImage: PropTypes.string, // Assuming postImage is an optional string
     likes: PropTypes.number, // Assuming likes is an optional number
     timestamp: PropTypes.string, // Assuming timestamp is an optional string
+
     blogtext: PropTypes.string // Assuming blogtext is an optional string
     /*
        PropTypes.shape ({
         user: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired
     }))*/
+
 }
 
 function Post({user, postImage, likes, timestamp, blogtext, comments}) {
-    const handleLike = (id) => {
+    /*const handleLike = (id) => {
         console.log("like clicked!")
         /*
         Axios.put(`http://localhost:4000/${experience._id}/likePost`).then(
@@ -38,7 +37,7 @@ function Post({user, postImage, likes, timestamp, blogtext, comments}) {
         )
         */
         
-    }
+    }*/
 
     return (
     <div className="post">
@@ -61,7 +60,8 @@ function Post({user, postImage, likes, timestamp, blogtext, comments}) {
         <div className="post__footer">
             <div className="post__footerIcons">
                 <div className="post__iconsMain">
-                    <FavoriteBorderIcon onClick={handleLike()} className="postIcon"/>
+                    <FavoriteBorderIcon className="postIcon"/>
+                    {/*<FavoriteBorderIcon onClick={handleLike()} className="postIcon"/>*/}
                     <ChatBubbleOutlineIcon className="postIcon"/>
                     <TelegramIcon className="postIcon"/>
 

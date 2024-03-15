@@ -6,7 +6,7 @@ const postSchema = new Schema({
     user_id: {type:String, required: true},//{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     user : {type:String, required: true},
     blogtext : String,
-    postImage: String,
+    imageURL: {type:String, required:true},
     timestamp: { type: Date, default: Date.now },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     comments: [{

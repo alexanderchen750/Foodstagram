@@ -1,10 +1,12 @@
-
+import PropTypes from 'prop-types';
 import "./PostList.css"
 //import Account from './Account.js'
 import Post from './Post.js'
 
 
-
+PostList.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 function PostList({ posts }) {
   return (
@@ -15,7 +17,7 @@ function PostList({ posts }) {
             <Post 
               key={`${post.user}_${post.timestamp}`} 
               user={post.user}
-              postImage={post.postImage} 
+              postImage={post.imageURL} 
               likes={post.likes} 
               timestamp={post.timestamp}
               blogtext={post.blogtext}

@@ -13,7 +13,7 @@ const PORT = process.env.PORT
 const DB_CONNECT = process.env.MONGODB_CONNECT
 
 
-
+//const s3Router = require('./src/controllers/s3controller')
 
 
 
@@ -33,11 +33,13 @@ app.use((req, res, next) =>{
 //middlware for the cors
 app.use(cors());
 
+//app.get('/image', s3Router)
 
 
 //postRoutes goes to posts file under route folder that organizes requests ex. user calls /api/posts/ex_function_inposts then that reqeust is executed
 app.use('/api/posts',postsRoutes); //bascially if call to api/post, then call post routes
 app.use('/api/users',userRoutes);
+
 
 
 //Connect to db
