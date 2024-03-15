@@ -25,7 +25,8 @@ const SignIn = () => {
 
         // Here you would check the credentials against your database or authentication service
         await login(email, password)
-        if(!error){
+
+        if(error){
             navigate('/'); 
         }
         // After authentication, you might set some global state or cookie indicating the signed-in state

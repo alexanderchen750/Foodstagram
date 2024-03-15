@@ -1,10 +1,12 @@
-
+import PropTypes from 'prop-types';
 import "./Timeline.css"
 import Suggestions from './Suggestions.js'
 //import Account from './Account.js'
 import Post from './Post.js'
 
-
+Timeline.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 
 function Timeline({ posts }) {
@@ -37,7 +39,7 @@ function Timeline({ posts }) {
             <Post 
               key={`${post.user}_${post.timestamp}`} 
               user={post.user}
-              postImage={post.postImage} 
+              postImage={post.imageURL} 
               likes={post.likes} 
               timestamp={post.timestamp}
               blogtext={post.blogtext}

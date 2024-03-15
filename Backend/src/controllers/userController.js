@@ -74,6 +74,19 @@ const createUser = async (req,res) =>{
     }
 }
 
+const nukeUsers = async (req,res) => {
+    const deleteResult = await userPosts.deleteMany({});
+
+    // Check the result of the delete operation
+    if (deleteResult.deletedCount === 0) {
+        return res.status(404).json({error: "No posts found to delete"});
+    }
+
+    // If posts were found and deleted, return a success response
+    res.status(200).json({message: `${deleteResult.deletedCount} posts were deleted successfully`});
+
+}
+
 const deleteUser = async (req,res) => {
     const {id} = req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
@@ -96,5 +109,6 @@ module.exports = {
     createUser,
     signupUser,
     loginUser,
-    deleteUser
+    deleteUser,
+    nukeUsers
 }
