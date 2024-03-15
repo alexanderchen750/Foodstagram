@@ -1,3 +1,4 @@
+import CommentList from './CommentList';
 import PropTypes from 'prop-types';
 import "./Post.css"
 import { Avatar } from '@mui/material'
@@ -14,10 +15,13 @@ Post.propTypes = {
     likes: PropTypes.number, // Assuming likes is an optional number
     timestamp: PropTypes.string, // Assuming timestamp is an optional string
     blogtext: PropTypes.string // Assuming blogtext is an optional string
-
+       PropTypes.shape ({
+        user: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired
+    }))
 }
 
-function Post({user, postImage, likes, timestamp, blogtext}) {
+function Post({user, postImage, likes, timestamp, blogtext, comments}) {
     const handleLike = (id) => {
         console.log("like clicked!")
         fetch('/like', {
@@ -64,6 +68,7 @@ function Post({user, postImage, likes, timestamp, blogtext}) {
 
             </div>
             Liked by {likes} people.
+                <CommentList comments={comments} />
         </div>
     </div>
     )
