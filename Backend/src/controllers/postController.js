@@ -2,6 +2,7 @@ const RecipePosts = require('../models/postModel')
 const userPosts = require('../models/userModel') // just users
 const mongoose = require('mongoose')
 
+
 //Get all posts
 const pullPosts = async (req,res) =>{
     const recipe_posts = await RecipePosts.find({}).sort({createdAt: -1})
@@ -48,18 +49,26 @@ const searchPost = async (req, res) => {
 
 //create a post
 const createPost = async (req,res) =>{
+    console.log("ENTERED")
     const user_id = req.user._id
     
     const { blogtext, tags} = req.body
     const user_post = await userPosts.findById(user_id)
     user = user_post.username
-    
+
     if(!user){
         return res.status(404).json({error: "User not Found"})
     }
+
+    if (!req.file || !req.file.location) {
+        return res.status(400).send('File upload failed or no file was uploaded.');
+    }
+    const imageURL = req.file.location;
+
+
     //add post to databse
     try{
-        const recipe_post = await RecipePosts.create({user, user_id, blogtext, tags})
+        const recipe_post = await RecipePosts.create({user, user_id, blogtext, imageURL, tags})
         res.status(200).json(recipe_post)
     } catch (error) {
         res.status(400).json({error: error.message})

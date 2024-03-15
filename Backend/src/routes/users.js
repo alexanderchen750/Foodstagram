@@ -7,7 +7,8 @@ const {
     getUser,
     loginUser,
     signupUser,
-    deleteUser
+    deleteUser,
+    nukeUsers
 } = require('../controllers/userController')
 
 //login
@@ -21,9 +22,11 @@ router.get('/',  pullUsers) //a certain route
 //GET singel post
 router.get('/:id', getUser)
 
+//Nuke Users for Dev Purposes
+router.delete('/nuke', nukeUsers)
+
 //Delete single user
 router.delete('/:id', deleteUser)
-
 
 //POST new post
 router.post('/', createUser)
