@@ -50,7 +50,7 @@ export default function Account() {
 
           <div className="account__username">
           <span className="avatar">
-            <Avatar>Z</Avatar> alsadeg
+            <Avatar>A</Avatar> @Username
           </span>
           </div> 
 
