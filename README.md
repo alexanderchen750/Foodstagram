@@ -4,6 +4,10 @@ git clone https://github.com/alexanderchen750/CS35L.git
 
  Ensure you have yarn, node, and react installed.
 
+Run First
+
+    npm install
+
 Run the following Command to install packages 
 
   npm run install-dependencies
