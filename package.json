@@ -5,6 +5,7 @@
     "inquirer": "^8.2.4"
   },
   "scripts": {
+    "install-dependencies": "concurrently 'cd frontend && npm install' 'cd backend && npm install'",
     "setup": "node setUp.js",
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "cd frontend && npm start",
