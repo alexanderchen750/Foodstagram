@@ -27,7 +27,7 @@ function App() {
             <Route path="/register" element={<Register />} />  
             <Route path="/login" element={<SignIn />} /> 
             <Route path="/logout" element={<LogOut />} />  
-            <Route path="/account/:userId/:profileId" element={<Account />} />
+            <Route path="/account/:userId" element={<Account />} />
         </Routes>
     </Router>
         
