@@ -6,8 +6,8 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import  { useAuthContext} from './hooks/useAuthContext'
-    import {useEffect, useState} from 'react';
+import  { useAuthContext} from './hooks/useAuthContext';
+import {useEffect, useState} from 'react';
 
 Post.propTypes = {
     user_id: PropTypes.string.isRequired, // Assuming user is a string
@@ -67,7 +67,7 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
             console.log('User is not logged in');
             return;
         }
-    
+
         const endpoint = likedStatus ? `/api/posts/unlike/${postId}` : `/api/posts/like/${postId}`;
     
         try {
