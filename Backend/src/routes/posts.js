@@ -36,7 +36,6 @@ const upload = multer({
 
 const {
     createPost,
-    likePost,
     pullPosts,
     getPost,
     deletePost,
@@ -69,8 +68,7 @@ router.post('/create', upload.single('file'), reqJwt, createPost);
 //NUKE the databse, remove this after
 router.delete('/nuke', nukePosts)
 
-//LIKE a post
-router.put('/like', likePost)
+
 
 //Delete single post
 router.delete('/:id',  deletePost)
