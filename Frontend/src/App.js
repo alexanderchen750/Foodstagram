@@ -23,7 +23,6 @@ function App() {
             <Route path="/about" element={<About />} />  
             <Route path="/search" element={<Search />} />  
             <Route path="/create" element={<Create />} />  
-           
             <Route path="/register" element={<Register />} />  
             <Route path="/login" element={<SignIn />} /> 
             <Route path="/logout" element={<LogOut />} />  

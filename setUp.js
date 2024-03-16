@@ -2,9 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
 const dotenv = require('dotenv');
+const { execSync } = require('child_process');
 
 const envPath = path.join(__dirname, 'backend', '.env'); 
-const frontendPackageJsonPath = path.join(__dirname, 'frontend', 'package.json'); 
+const frontendPackageJsonPath = path.join(__dirname, 'Frontend', 'package.json'); 
 
 
 const existingEnv = dotenv.config({ path: envPath }).parsed || {};
@@ -70,6 +71,15 @@ inquirer.prompt([
     packageJsonData.proxy = `http://localhost:${backendPort}`;
     fs.writeFileSync(frontendPackageJsonPath, JSON.stringify(packageJsonData, null, 2));
     console.log(`Updated frontend package.json proxy to use port ${backendPort}.`);
+  }
+
+  //installing other front end dependecies
+  try {
+    console.log('Installing frontend dependencies...');
+    execSync('yarn add react-scripts eslint-plugin-react-refresh --dev', { cwd: path.join(__dirname, 'Frontend'), stdio: 'inherit' });
+    console.log('Frontend dependencies installed successfully.');
+  } catch (error) {
+    console.error('Failed to install certain frontend dependencies:', error);
   }
 
 

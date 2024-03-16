@@ -1,4 +1,4 @@
-import React from 'react'
+
 /*needs functionality*/
 import "./Logout.css";
 
@@ -6,7 +6,7 @@ function Logout() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Here you would change the status of loging in
-    console.log(loggedOut);
+
   }
   return(
     
