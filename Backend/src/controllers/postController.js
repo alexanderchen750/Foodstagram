@@ -27,6 +27,24 @@ const getPost = async (req,res) => {
     res.status(200).json(recipe_post)
 }
 
+//Get post from one user
+
+const getUserPosts = async (req,res) => {
+    const { id } = req.params
+    console.log(id)
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: "Post ID Is Invalid"})
+    }
+    const user_post = await RecipePosts.find({ user_id: id });
+    if(!user_post){
+        return res.status(404).json({error: "Posts not Found"})
+    }
+
+    res.status(200).json(user_post)
+
+   
+}
+
 //Search for a post, requires query parameter
 const searchPost = async (req, res) => {
     const { searchTerm } = req.query; 
@@ -173,5 +191,6 @@ module.exports = {
     searchPost,
     nukePosts,
     likePost,
-    unlikePost
+    unlikePost,
+    getUserPosts
 } 

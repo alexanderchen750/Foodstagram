@@ -5,11 +5,12 @@ import { BrowserRouter as Router,
 import About from './About';
 import Homepage from './Homepage';
 import Search from './Search';
-import Contact from './Contact';
+
 import Register from './Register';
 import SignIn from './Login';
 import LogOut from './Logout';
 import Create from './CreatePost';
+import Account from './Account';
 
 function App() {
 
@@ -22,10 +23,11 @@ function App() {
             <Route path="/about" element={<About />} />  
             <Route path="/search" element={<Search />} />  
             <Route path="/create" element={<Create />} />  
-            <Route path="/contact" element={<Contact />} />  
+           
             <Route path="/register" element={<Register />} />  
             <Route path="/login" element={<SignIn />} /> 
             <Route path="/logout" element={<LogOut />} />  
+            <Route path="/account/:userId/:profileId" element={<Account />} />
         </Routes>
     </Router>
         

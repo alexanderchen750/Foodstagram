@@ -1,6 +1,11 @@
 
 import './Account.css';
+//import React from 'react';
 import { Avatar } from '@mui/material'
+import { useParams } from 'react-router-dom'; 
+import Post from './Post.js'
+import { useEffect, useState } from 'react';
+
 
 /*(self note) need to check: 
 - avatar pic is initail of username, so username[0]
@@ -34,6 +39,39 @@ function CommentsButton() {
 }
 */
 export default function Account() {
+  const { userId } = useParams();
+  const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        let response = await fetch(`/api/users/userToId/${userId}`);
+        if (!response.ok) {
+          throw new Error('YUR Failed to fetch user data');
+        }
+        const userData = await response.json();
+
+        // Now fetch posts for the user by _id
+        response = await fetch(`/api/posts/userPost/${userData.userId}`);
+        if (!response.ok) throw new Error('Failed to fetch posts');
+        const postsData = await response.json();
+
+        // Update state with fetched data
+        setUser(userData);
+        setPosts(postsData);
+      } catch (error) {
+        console.error(error);
+        setUser(null);
+        setPosts([]);
+      }
+    };
+
+    if (userId) {
+      fetchUserData();
+    }
+  }, [userId]);
+
+  
   return (
     <div>
       <div className="account">
@@ -50,10 +88,24 @@ export default function Account() {
 
           <div className="account__username">
           <span className="avatar">
-            <Avatar>A</Avatar> @Username
+            <Avatar>{user?.username}</Avatar> 
+            <span>{userId}</span>
           </span>
           </div> 
+        </div>
 
+        <div className="timeline__posts">
+          {posts ? posts.map(post => ( // Check if posts is not null
+            <Post 
+              key={`${post.user}_${post.timestamp}`} 
+              postId={post._id}
+              user_id={post.user}
+              postImage={post.imageURL} 
+              likes={post.likes} 
+              timestamp={post.timestamp}
+              blogtext={post.blogtext}
+            />
+          )) : "Loading..."} {/* Display loading or a message when posts are null */}
         </div>
       </div>
 
@@ -70,12 +122,6 @@ export default function Account() {
           <div className="info__likes">
             <span className='like'>
              Your Likes 
-            </span>
-          </div>
-           
-          <div className="info__comments">
-            <span className='comments'>
-            Your Comments 
             </span>
           </div>
 

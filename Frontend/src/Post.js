@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import "./Post.css"
 import { Avatar } from '@mui/material'
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+
 import  { useAuthContext} from './hooks/useAuthContext';
 import {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom'; 
 
 Post.propTypes = {
     user_id: PropTypes.string.isRequired, // Assuming user is a string
@@ -19,6 +18,7 @@ Post.propTypes = {
 }
 
 function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
+    const navigate = useNavigate();
     const [likedStatus, setLikedStatus] = useState(false);
     const [localLikes, setLocalLikes] = useState(likes);
     const {user} = useAuthContext()
@@ -60,7 +60,9 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
         checkIfUserLikedPost();
     }, [likes]);
 
-
+    const handleUserIdClick = () => {
+        navigate(`/account/${user_id}`); // Navigate to Account page on click
+    };
 
     const handleLikeClick = async () => {
         if (!user) {
@@ -88,17 +90,10 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
             setLikedStatus(!likedStatus);
             setLocalLikes(prev => 
                 !likedStatus 
-                ? [...prev, user._id] // Add user._id to localLikes
-                : prev.filter(id => id !== user._id) // Remove user._id from localLikes
+                ? [...prev, user._id] 
+                : prev.filter(id => id !== user._id) 
             );
-            /*setLocalLikes(prev => 
-                !likedStatus 
-                ? [...prev, user._id] // Add user._id to localLikes
-                : prev.filter(id => id !== user._id) // Remove user._id from localLikes
-            );
-            const updatedLikes = await res.json();
-            console.log(updatedLikes)
-            setLocalLikes(updatedLikes);*/
+   
 
         } catch (error) {
             console.error('Error updating like status:', error);
@@ -110,10 +105,10 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
     <div className="post">
         <div className="post__header">
             <div className="post__headerAuthor">
-            <Avatar className="avatar">{user_id}</Avatar>
-            {user_id} • <span className="avatar">{timestamp.substring(0, 10)}</span>
+            <Avatar className="avatar" onClick={handleUserIdClick}>{user_id}</Avatar>
+            {user_id} • <span className="avatar" >{timestamp.substring(0, 10)}</span>
             </div>
-            <MoreHorizIcon className="threeDots"/>
+           
         </div>
         <div className="post__image">
             <img
@@ -131,12 +126,8 @@ function Post({user_id, postId, postImage, likes, timestamp, blogtext}) {
                         className={`postIcon ${likedStatus ? 'liked' : ''}`} 
                         onClick={handleLikeClick}
                     />
-                    <ChatBubbleOutlineIcon className="postIcon"/>
-                    <TelegramIcon className="postIcon"/>
+                
 
-                </div>
-                <div className="post__iconSave">
-                    <BookmarkBorderIcon className="postIcon"/>
                 </div>
 
             </div>

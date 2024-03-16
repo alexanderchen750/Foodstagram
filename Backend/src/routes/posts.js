@@ -43,14 +43,18 @@ const {
     searchPost,
     nukePosts,
     likePost,
-    unlikePost
+    unlikePost,
+    getUserPosts
 } = require('../controllers/postController')
 
 //Require token to do
 const reqJwt = require('../middleware/requireJWT')
 
+//GET all posts for a ceratin user
+router.get('/userPost/:id', getUserPosts)
+
 //GET all posts
-router.get('/',  pullPosts) //a certain route 
+router.get('/', pullPosts) //a certain route 
 
 //GET posts matching search word
 //Formate looks like this: /search?searchTerm=udon+ramen, returns results with ramen or udon

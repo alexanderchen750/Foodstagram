@@ -61,6 +61,22 @@ const getUser = async (req,res) => {
     res.status(200).json(user_post)
 }
 
+const userToId = async (req,res) => {
+    const { username } = req.params
+ 
+    try {
+        const response = await userPosts.findOne({ username: username }); // Find user by username
+        if (!response) {
+            return res.status(404).json({ error: "User not found" });
+        }
+        res.status(200).json({ userId: response._id });
+    } catch (error) {
+
+        console.error("Fetching user ID failed:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
+
 //Get one user
 const getID = async (req, res) => {
     const userId = req.user._id;
@@ -120,5 +136,6 @@ module.exports = {
     loginUser,
     deleteUser,
     nukeUsers,
-    getID
+    getID,
+    userToId
 }

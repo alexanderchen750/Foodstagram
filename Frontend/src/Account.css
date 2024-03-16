@@ -3,6 +3,13 @@
 .account{
   display: flex;
   flex-direction: column;
+  margin-left: 500px;
+}
+.account_info{
+  display: flex;
+  flex-direction: column;
+  margin-left: 500px;
+  color: white;
 }
 
 .account__top{

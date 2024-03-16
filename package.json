@@ -1,10 +1,12 @@
 {
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5",
+    "inquirer": "^8.2.4"
   },
-  
   "scripts": {
-  "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "setup": "node setUp.js",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "cd frontend && npm start",
     "start:backend": "cd backend && npm start"
   }

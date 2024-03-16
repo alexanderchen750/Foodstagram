@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 // Import Link component for navigation
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
-import ExploreIcon from '@mui/icons-material/Explore';
 import PasswordIcon from '@mui/icons-material/Password';
 import InfoIcon from '@mui/icons-material/Info';
 import foodagramlogo from "./assets/logo.png";
@@ -41,10 +40,7 @@ function Sidenav() {
           <span>Create Post</span>
         </Link>
         )}
-        <Link to="/contact" className="sidenav__button">
-          <ExploreIcon />
-          <span>Contact us</span>
-        </Link>
+        
         
         <Link to="/about" className="sidenav__button">
           <InfoIcon />

@@ -21,14 +21,16 @@ const Search = () =>
     };
 
     // Handle changing of checkboxes
+    /*
     const handleCheckboxChange = (event) => {
         setFilters({
             ...filters,
             [event.target.name]: event.target.checked,
         });
-    };
+    };*/
     
     // State for selected filters
+    /*
     const [filters, setFilters] = useState({
         users: false,
         recipeNames: false,
@@ -36,7 +38,7 @@ const Search = () =>
         vegetarian: false,
         glutenFree: false,
         keto: false,
-        halal: false,});
+        halal: false,});*/
         
     
         // Handle form submission
@@ -79,6 +81,7 @@ return (
                 value={searchInput}
                 onChange={handleInputChanges}
                 />
+                {/*
                 <div className="checkbox-container">
                     <div className="checkbox-group">
                         <div>
@@ -121,6 +124,7 @@ return (
                         </div>
                     </div>
                 </div>
+*/}
                 <button type="submit">Search</button>
                 </form>
         </div>

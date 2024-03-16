@@ -10,7 +10,8 @@ const {
     signupUser,
     deleteUser,
     nukeUsers,
-    getID
+    getID,
+    userToId
 } = require('../controllers/userController')
 
 //login
@@ -18,8 +19,12 @@ router.post('/login', loginUser)
 
 router.post('/signup', signupUser)
 
+router.get('/userToId/:username', userToId)
+
 //Get user object id
 router.get('/userID', reqJwt, getID)
+
+
 
 //GET all posts
 router.get('/',  pullUsers) //a certain route 
