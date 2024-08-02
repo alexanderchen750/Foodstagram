@@ -1,3 +1,7 @@
+Coding Project for UCLA CS35L
+
+Final Grade: 97%
+
 How to run the github code:
 git clone https://github.com/alexanderchen750/CS35L.git
  into directory of choice
