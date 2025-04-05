@@ -2,7 +2,8 @@
 
 **Final Grade: 97%**
 
-How to run the github code:
+How to run the github code (note you will need private data base info for backend, however you can run a trial run 
+of front end via going to Frontend and npm start and use filler info in place of backend.):
 git clone https://github.com/alexanderchen750/CS35L.git
  into directory of choice
 
